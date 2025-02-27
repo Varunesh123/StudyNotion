@@ -9,8 +9,8 @@ import ExploreMore from '../components/core/Homepage/ExploreMore.jsx';
 import TimelineSection from '../components/core/Homepage/TimelineSection.jsx';
 import LearningLanguageSection from "../components/core/Homepage/LearningLanguageSection.jsx";
 import InstructorSection from '../components/core/Homepage/InstructorSection.jsx';
-import ReviewSlider from '../components/core/Homepage/ReviewSlider.jsx';
-import Footer from '../components/core/Homepage/Footer.jsx';
+import ReviewSlider from '../components/Common/ReviewSlider.jsx';
+import Footer from '../components/Common/Footer.jsx';
 
 
 function Home() {

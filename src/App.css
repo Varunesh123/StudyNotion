@@ -87,9 +87,7 @@ details > summary::-webkit-details-marker {
     rgba(14, 26, 45, 0.24) -1.4%,
     rgba(17, 30, 50, 0.38) 104.96%
   );
-  /* backdrop-filter: blur(26px); */
 }
 .homepage_bg {
   background: url("../src/assets/Images/bghome.svg");
-  /* background-size: contain; */
 }
