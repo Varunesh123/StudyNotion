@@ -9,7 +9,7 @@ import ExploreMore from '../components/core/Homepage/ExploreMore.jsx';
 import TimelineSection from '../components/core/Homepage/TimelineSection.jsx';
 import LearningLanguageSection from "../components/core/Homepage/LearningLanguageSection.jsx";
 import InstructorSection from '../components/core/Homepage/InstructorSection.jsx';
-import ReviewSlider from '../components/Common/ReviewSlider.jsx';
+// import ReviewSlider from '../components/Common/ReviewSlider.jsx';
 import Footer from '../components/Common/Footer.jsx';
 
 
@@ -143,7 +143,7 @@ function Home() {
         <h1 className='text-center text-4xl font-semibold mt-8'>
           Reviews from other learners
         </h1>
-        <ReviewSlider/>
+        {/* <ReviewSlider/> */}
       </div>
       <Footer/>
     </div>
