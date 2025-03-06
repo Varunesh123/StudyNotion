@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineMenu, AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsChevronDown } from "react-icons/bs";
 import { Link, useLocation, matchPath } from 'react-router-dom';
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import { useSelector } from 'react-redux';
+import { apiConnector } from "../../services/apiConnector";
 
 function Navbar() {
   const {token} = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile)
   const { totalItems } = useSelector((state) => state.cart)
   const location = useLocation()
+
+  const [subLinks, setSubLinks] = useState()
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    (async() => {
+      setLoading(true)
+      try {
+        const res = await apiConnector("GET", categories.CATEGORIES_API)
+        setSubLinks(res.data.data)
+      } catch (error) {
+        console.log("Could not fetch Categories.", error)
+      }
+      setLoading(false)
+    })()
+  },[])
+
   const matchRoute = (route) => {
     return matchPath({ path: route}, location.pathname)
   }
