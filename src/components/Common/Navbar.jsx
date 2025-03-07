@@ -5,8 +5,12 @@ import { Link, useLocation, matchPath } from 'react-router-dom';
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import { useSelector } from 'react-redux';
 import { apiConnector } from "../../services/apiConnector";
+import { NavbarLinks } from '../../data/navbar-links';
+import { ACCOUNT_TYPE } from '../../utils/constants';
+import ProfileDropdown from '../core/Auth/ProfileDropdown';
 
 function Navbar() {
+  console.log("Navbar")
   const {token} = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile)
   const { totalItems } = useSelector((state) => state.cart)
@@ -19,7 +23,7 @@ function Navbar() {
     (async() => {
       setLoading(true)
       try {
-        const res = await apiConnector("GET", categories.CATEGORIES_API)
+        const res = await apiConnector("GET", "http://localhost:8000/api/v1/course/showAllCategories") //TODO: chage with api url
         setSubLinks(res.data.data)
       } catch (error) {
         console.log("Could not fetch Categories.", error)
@@ -27,7 +31,6 @@ function Navbar() {
       setLoading(false)
     })()
   },[])
-
   const matchRoute = (route) => {
     return matchPath({ path: route}, location.pathname)
   }
@@ -35,6 +38,7 @@ function Navbar() {
     <div className={`flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700 ${
       location.pathname !== "/" ? "bg-richblack-800" : ""
     } transition-all duration-200`}>
+      <h1>Nav Bar</h1>
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         <Link to="/">
           <img src={logo} alt="Logo" width={160} height={32} loading='lazy'/>
@@ -43,7 +47,7 @@ function Navbar() {
         <nav className='hidden md:block'>
           <ul className='flex gap-x-6 text-richblack-25'>
             {
-              NavbarLinks.map((link, index) => {
+              NavbarLinks.map((link, index) => (
                 <li key={index}>
                   {link.title === "Catalog" ? (
                   <>
@@ -60,7 +64,7 @@ function Navbar() {
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
                           {loading ? (
                             <p className='text-center'>Loading...</p>
-                          ) : subLinks.length ? (
+                          ) : subLinks?.length ? (
                             <>
                             {
                               subLinks?.filter((subLink) => subLink?.courses?.length > 0).map((subLink, index) => (
@@ -86,7 +90,7 @@ function Navbar() {
                     </Link>
                   )}
                 </li>
-              })}
+              ))}
           </ul>
         </nav>
         <div className="hidden items-center gap-x-4 md:flex">
