@@ -8,6 +8,7 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx'
 import OpenRoute from './components/core/Auth/OpenRoute.jsx';
 import About from './pages/About.jsx';
+import Contact from './pages/Contact.jsx';
 
 function App() {
   // const dispatch = useDispatch()
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>} />
+        <Route path='/contact' element={<Contact/>} />
         <Route
           path='login'
           element={
