@@ -44,7 +44,7 @@ app.get('/api/v1/', (req, res) => {
     })
 })
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 8000
 
 app.listen(PORT, () => {
     console.log(`Server is Running at ${PORT}`);
